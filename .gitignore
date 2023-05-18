@@ -1,0 +1,6 @@
+build/*
+dist/*
+inventario-productos-ejb/build/*
+inventario-productos-war/build/*
+inventario-productos-ejb/dist/*
+inventario-productos-war/dist/*

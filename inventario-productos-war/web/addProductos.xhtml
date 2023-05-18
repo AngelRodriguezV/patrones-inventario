@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Agregar Productos</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous"/>
+    </h:head>
+    <h:body>
+        <div class="container">
+        <div class="row pt-4">
+        <f:view>
+            <h:form class="card p-4 col-12 mb-3">
+                <h:commandLink value="Menu" action="index" class="btn btn-primary col-2 col-md-4"/>
+            </h:form>
+        </f:view>
+        <f:view>
+            <h:form class="card p-4 col-12 mb-3">
+                <h:outputLabel class="fs-1 mb-3">Agregar Productos</h:outputLabel>
+                <div class="input-group mb-3">
+                    <h:outputLabel value="Descripcion:" for="descripcion" class="input-group-text"/>
+                    <h:inputText id="descripcion" value="#{adProductos.producto.descripcion}" title="Descripcion" required="true" class="form-control">
+                        <f:validateLength maximum="30"/>
+                    </h:inputText>
+                </div>
+                <div class="input-group mb-3">
+                    <h:outputLabel value="Existencia:" for="existencia" class="input-group-text"/>
+                    <h:inputText id="existencia" value="#{adProductos.producto.existencia}" title="Existencia" required="true" class="form-control">
+                        <f:validateLongRange minimum="1"/>
+                    </h:inputText>
+                </div>
+                <div class="input-group mb-3">
+                    <h:outputLabel value="Precio:" for="precio" class="input-group-text"/>
+                    <h:inputText id="precio" value="#{adProductos.producto.precio}" title="Precio" required="true" class="form-control">
+                        <f:validateDoubleRange minimum="1"/>
+                    </h:inputText>
+                </div>
+                <div class="input-group mb-3">
+                    <h:outputLabel value="FechaElab:" for="fechaElab" class="input-group-text"/>
+                    <h:inputText id="fechaElab" value="#{adProductos.producto.fechaelab}" title="FechaElab" required="true" class="form-control">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                </div>
+                <div class="input-group mb-3">
+                    <h:outputLabel value="Unidad:" for="unidad" class="input-group-text"/>
+                    <h:selectOneMenu id="unidad" value="#{adProductos.unidad.idunidad}" title="Unidad" required="true" class="form-select">
+                        <!-- TODO: update below reference to list of available items-->
+                        <f:selectItems value="#{adUnidades.unidades}" var="vunidad" itemLabel="#{vunidad.unidad}" itemValue="#{vunidad.idunidad}"/>
+                    </h:selectOneMenu>
+                </div>
+                <h:commandButton value="Agregar" actionListener="#{adProductos.agregarProducto()}" class="btn btn-primary col-2 col-md-4"/>
+                                    <!-- aqui va la llamada al metodo producto, ya le tome captura -->
+            </h:form>
+        </f:view>
+        </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    </h:body>
+</html>
